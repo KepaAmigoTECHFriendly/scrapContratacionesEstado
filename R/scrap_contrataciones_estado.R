@@ -23,7 +23,7 @@
 scrap_contrataciones_estado <- function(palabra_clave){
 
   # Palabra clave por la que hacer el filtrado
-  palabra_clave <- as.character(tolower(palabra_clave))
+  palabra_clave <- tolower(as.character(palabra_clave))
 
   #Evita que la palabra clave sean artículos o espacios en blanco
   if(nchar(palabra_clave) <= 3 & tolower(palabra_clave) != "cpi" ){
