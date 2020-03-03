@@ -15,13 +15,15 @@
 #' httr
 #' stringr
 #' anytime
+#' rvest
+#' xml2
 #'
 #' @export
 
 scrap_contrataciones_estado <- function(palabra_clave){
 
   # Palabra clave por la que hacer el filtrado
-  palabra_clave <- as.character(palabra_clave)
+  palabra_clave <- as.character(tolower(palabra_clave))
 
   #Evita que la palabra clave sean artículos o espacios en blanco
   if(nchar(palabra_clave) <= 3 & tolower(palabra_clave) != "cpi" ){
@@ -188,8 +190,8 @@ scrap_contrataciones_estado <- function(palabra_clave){
   #===============================================================
 
   #Variables envío JSON a plataforma
-  TB_token <- "t_contrat_ermua"
-  TB_url   <- paste("http://88.99.184.239:8080/api/v1/",TB_token,"/telemetry",sep="")
+  TB_token <- "Jz90c8d89Ub3fmlWFNsi"
+  TB_url   <- paste("http://94.130.77.253:8080/api/v1/",TB_token,"/telemetry",sep="")
 
   json_contrataciones_return <- toJSON(df_filtrado,pretty=T)
 
