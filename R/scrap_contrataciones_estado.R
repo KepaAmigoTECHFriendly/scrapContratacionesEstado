@@ -196,7 +196,7 @@ scrap_contrataciones_estado <- function(palabra_clave){
   json_contrataciones_return <- toJSON(df_filtrado,pretty=T)
 
   #Extracción timestamp en formato unix
-  tsi <- format(as.numeric(anytime(Sys.Date()))*1000,scientific = F)
+  tsi <- format(as.numeric(anytime(df_filtrado$Presentación[1]))*1000,scientific = F)
   #tsi <- sub("\\..*", "",tsi)
   for(i in 1:nrow(df_filtrado)){
     ts <- as.numeric(tsi) +i  #Añade i ms al timestamp para poder verse sin solapamiento en el widget de la plataforma smart city.
