@@ -1,0 +1,13 @@
+Package: scrapContratacionesEstado
+Type: Package
+Title: Scrapea la Plataforma de Contratación del Sector Público.
+Version: 0.1.0
+Author: Gonzalo Pellejero and Kepa Amigo
+Maintainer: Gonzalo Pellejero <gonzalo@techfriendly.es> and Kepa Amigo <kepa@techfriendly.es>
+Description: Scrapea la Plataforma de Contratación del Sector Público y filtra el resultado en función de la palabra clave parámetro, devolviendo un json, 
+    enviándo este a la plataforma Smart City (TECH) del cliente correspondiente.
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+Imports: jsonlite, tidyr, lubridate, httr, stringr, anytime
+RoxygenNote: 7.0.2
