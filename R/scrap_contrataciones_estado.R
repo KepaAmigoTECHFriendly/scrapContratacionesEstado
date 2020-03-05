@@ -20,15 +20,6 @@
 #'
 #' @export
 
-library(jsonlite)
-library(tidyr)
-library(lubridate)
-library(httr)
-library(stringr)
-library(anytime)
-library(rvest)
-library(xml2)
-
 scrap_contrataciones_estado <- function(palabra_clave){
 
   # Palabra clave por la que hacer el filtrado
