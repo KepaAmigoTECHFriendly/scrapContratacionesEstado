@@ -20,15 +20,6 @@
 #'
 #' @export
 
-library(jsonlite)
-library(tidyr)
-library(lubridate)
-library(httr)
-library(stringr)
-library(anytime)
-library(rvest)
-library(xml2)
-
 scrap_contrataciones_estado <- function(palabra_clave){
 
   # Palabra clave por la que hacer el filtrado
@@ -164,7 +155,7 @@ scrap_contrataciones_estado <- function(palabra_clave){
 
 
   df <- data.frame("Expediente" = expedientes)
-  df2 <- as.matrix(as.data.frame(matriz_datos))
+  df2 <- as.data.frame(matriz_datos)
   names(df2) <- nombres
 
   df_contrataciones_completo <- na.omit(cbind(df,df2))
@@ -192,14 +183,12 @@ scrap_contrataciones_estado <- function(palabra_clave){
   # Subset DF todos_registros por expedientes palabra clave
   df_filtrado <- subset(df_contrataciones_completo, Expediente == expediente_palabra_clave)
 
-  return(df_filtrado)
-
   #===============================================================
   # CREACIÓN JSON Y ENVÍO A PLATAFORMA SMART CITY
   #===============================================================
 
   #Variables envío JSON a plataforma
-  TB_token <- "Jz90c8d89Ub3fmlWFNsi"
+  TB_token <- "olWiYmKdgn4nMgahw7qq"
   TB_url   <- paste("http://94.130.77.253:8080/api/v1/",TB_token,"/telemetry",sep="")
 
   json_contrataciones_return <- toJSON(df_filtrado,pretty=T)
