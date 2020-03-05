@@ -20,6 +20,15 @@
 #'
 #' @export
 
+library(jsonlite)
+library(tidyr)
+library(lubridate)
+library(httr)
+library(stringr)
+library(anytime)
+library(rvest)
+library(xml2)
+
 scrap_contrataciones_estado <- function(palabra_clave){
 
   # Palabra clave por la que hacer el filtrado
@@ -120,7 +129,7 @@ scrap_contrataciones_estado <- function(palabra_clave){
                "Importe de Adjudicación", "Enlace licitación", "Fecha fin de presentación de oferta", "Documento: Formalización",
                "Documento: Anuncio de Licitación", "Documento: Pliego", "Documento: Adjudicación")
 
-  matriz_datos <- matrix(, nrow = 6, ncol = length(nombres) + 1)
+  matriz_datos <- matrix(, nrow = 6, ncol = length(nombres))
 
   expedientes <- unique(todos_registros$expediente)
 
@@ -155,7 +164,7 @@ scrap_contrataciones_estado <- function(palabra_clave){
 
 
   df <- data.frame("Expediente" = expedientes)
-  df2 <- as.data.frame(matriz_datos)
+  df2 <- as.matrix(as.data.frame(matriz_datos))
   names(df2) <- nombres
 
   df_contrataciones_completo <- na.omit(cbind(df,df2))
@@ -182,6 +191,8 @@ scrap_contrataciones_estado <- function(palabra_clave){
 
   # Subset DF todos_registros por expedientes palabra clave
   df_filtrado <- subset(df_contrataciones_completo, Expediente == expediente_palabra_clave)
+
+  return(df_filtrado)
 
   #===============================================================
   # CREACIÓN JSON Y ENVÍO A PLATAFORMA SMART CITY
