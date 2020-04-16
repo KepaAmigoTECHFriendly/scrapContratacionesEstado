@@ -188,7 +188,7 @@ scrap_contrataciones_estado <- function(palabra_clave){
   #===============================================================
 
   #Variables envío JSON a plataforma
-  TB_token <- "olWiYmKdgn4nMgahw7qq"
+  TB_token <- "http://78.47.39.122:8080"
   TB_url   <- paste("http://94.130.77.253:8080/api/v1/",TB_token,"/telemetry",sep="")
 
   json_contrataciones_return <- toJSON(df_filtrado,pretty=T)
