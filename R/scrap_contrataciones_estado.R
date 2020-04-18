@@ -165,7 +165,7 @@ scrap_contrataciones_estado <- function(palabra_clave){
 
   # EXTRACCIÓN PALABRA CLAVE
   # Extracción objeto de contrato
-  objeto_contrato <- df_contrataciones_completo$`Objeto del contrato`
+  objeto_contrato <- iconv(df_contrataciones_completo$`Objeto del contrato` ,to="ASCII//TRANSLIT")
 
   # Extracción expedientes que cumplen la condición de la palabra clave
   pos_palabra_clave <- grep(palabra_clave,tolower(objeto_contrato))
@@ -188,8 +188,8 @@ scrap_contrataciones_estado <- function(palabra_clave){
   #===============================================================
 
   #Variables envío JSON a plataforma
-  TB_token <- "http://78.47.39.122:8080"
-  TB_url   <- paste("http://94.130.77.253:8080/api/v1/",TB_token,"/telemetry",sep="")
+  TB_token <- "hn19uwxw1PfWnxccroUI"
+  TB_url   <- paste("http://78.47.39.122:8080/api/v1/",TB_token,"/telemetry",sep="")
 
   json_contrataciones_return <- toJSON(df_filtrado,pretty=T)
 
