@@ -183,6 +183,7 @@ scrap_contrataciones_estado <- function(palabra_clave){
   # Subset DF todos_registros por expedientes palabra clave
   df_filtrado <- subset(df_contrataciones_completo, Expediente == expediente_palabra_clave)
 
+
   #===============================================================
   # CREACIÓN JSON Y ENVÍO A PLATAFORMA SMART CITY
   #===============================================================
